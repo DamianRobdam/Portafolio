@@ -342,7 +342,7 @@ footer span { color: var(--muted); }
 }
 /* ── BACK TO TOP ── */
 #backToTop {
-  position: fixed; bottom: 32px; right: 32px; z-index: 500;
+  position: fixed; bottom: 32px; right: 32px; z-index: 1001;
   width: 44px; height: 44px; border-radius: 50%;
   background: var(--accent); color: #fff;
   border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
@@ -352,6 +352,13 @@ footer span { color: var(--muted); }
 }
 #backToTop.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
 #backToTop:hover { background: #3395ff; transform: translateY(-3px); box-shadow: 0 8px 28px rgba(10,132,255,0.5); }
+@media (max-width: 700px) {
+  #backToTop {
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    right: 20px;
+    width: 48px; height: 48px;
+  }
+}
 
 /* ── FLOATING CODE SNIPPETS ── */
 .code-float {
@@ -482,7 +489,7 @@ footer span { color: var(--muted); }
   max-height: 0; overflow: hidden;
   transition: max-height .45s cubic-bezier(.4,0,.2,1);
 }
-.accordion-body.open { max-height: 600px; }
+.accordion-body.open { max-height: 1200px; }
 .accordion-inner {
   display: flex; border-top: 0.5px solid var(--border);
   background: var(--s2); transition: background .4s;
@@ -507,6 +514,7 @@ footer span { color: var(--muted); }
   .accordion-inner { flex-direction: column; }
   .mc-info-col { border-right: none; border-bottom: 0.5px solid var(--border); }
   .mc-qr-col { width: 100%; }
+  .accordion-body.open { max-height: 1600px; }
 }
 
 /* ── CV DOWNLOAD BUTTON ── */

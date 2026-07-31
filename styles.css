@@ -357,6 +357,11 @@ footer span { color: var(--muted); }
     bottom: calc(20px + env(safe-area-inset-bottom, 0px));
     right: 20px;
     width: 48px; height: 48px;
+    /* En móvil lo dejamos siempre visible y tocable, sin depender de que
+       el listener de scroll se dispare correctamente en el navegador del teléfono. */
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
   }
 }
 

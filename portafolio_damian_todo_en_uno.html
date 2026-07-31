@@ -386,6 +386,9 @@ footer span { color: var(--muted); }
     bottom: calc(20px + env(safe-area-inset-bottom, 0px));
     right: 20px;
     width: 48px; height: 48px;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
   }
 }
 
@@ -1844,14 +1847,28 @@ function toggleAccordion() {
   const btn     = document.getElementById('accordionBtn');
   const isOpen  = body.classList.contains('open');
 
-  body.classList.toggle('open', !isOpen);
-  chevron.classList.toggle('rotated', !isOpen);
-  btn.setAttribute('aria-expanded', String(!isOpen));
-
   if (!isOpen) {
     renderQR();
+    body.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 'px';
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px';
+    requestAnimationFrame(() => {
+      body.style.maxHeight = '0px';
+    });
+    body.classList.remove('open');
   }
+
+  chevron.classList.toggle('rotated', !isOpen);
+  btn.setAttribute('aria-expanded', String(!isOpen));
 }
+
+window.addEventListener('resize', () => {
+  const body = document.getElementById('accordionBody');
+  if (body && body.classList.contains('open')) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+});
 
 // ── DESCARGAR VCARD ──
 function downloadVCard() {

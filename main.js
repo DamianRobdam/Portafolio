@@ -198,14 +198,33 @@ function toggleAccordion() {
   const btn     = document.getElementById('accordionBtn');
   const isOpen  = body.classList.contains('open');
 
-  body.classList.toggle('open', !isOpen);
+  if (!isOpen) {
+    // Abrir: primero renderizamos el QR, luego medimos la altura real del contenido
+    renderQR();
+    body.classList.add('open');
+    // Usamos la altura real del contenido en vez de un valor fijo adivinado,
+    // así nunca se corta sin importar el tamaño de pantalla o cuánto contenido haya.
+    body.style.maxHeight = body.scrollHeight + 'px';
+  } else {
+    body.style.maxHeight = body.scrollHeight + 'px'; // fija el valor actual antes de animar a 0
+    requestAnimationFrame(() => {
+      body.style.maxHeight = '0px';
+    });
+    body.classList.remove('open');
+  }
+
   chevron.classList.toggle('rotated', !isOpen);
   btn.setAttribute('aria-expanded', String(!isOpen));
-
-  if (!isOpen) {
-    renderQR();
-  }
 }
+
+// Si la ventana cambia de tamaño (rotar el teléfono) con el acordeón abierto,
+// recalculamos la altura para que no quede cortado.
+window.addEventListener('resize', () => {
+  const body = document.getElementById('accordionBody');
+  if (body && body.classList.contains('open')) {
+    body.style.maxHeight = body.scrollHeight + 'px';
+  }
+});
 
 // ── DESCARGAR VCARD ──
 function downloadVCard() {

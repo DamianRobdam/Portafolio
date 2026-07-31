@@ -258,6 +258,9 @@ const backToTopBtn = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
   backToTopBtn.classList.toggle('visible', window.scrollY > 400);
 });
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 
 // ── HAMBURGER MENU ──
 const hamburger  = document.getElementById('hamburger');
@@ -274,6 +277,30 @@ function closeMenu() {
   hamburger.classList.remove('open');
   navOverlay.classList.remove('open');
   hamburger.setAttribute('aria-expanded', 'false');
+}
+// Cerrar el menú al tocar cualquier enlace o el fondo oscuro (antes eran onclick inline,
+// bloqueados por la Content-Security-Policy: script-src 'self')
+navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+navOverlay.addEventListener('click', closeMenu);
+
+// ── ACCORDION Y BOTÓN GUARDAR CONTACTO (antes onclick inline) ──
+document.getElementById('accordionBtn').addEventListener('click', toggleAccordion);
+document.getElementById('downloadVCardBtn').addEventListener('click', downloadVCard);
+
+// ── FALLBACK DE FOTOS DE PERFIL (antes onerror inline) ──
+const heroAvatarImg = document.getElementById('heroAvatarImg');
+if (heroAvatarImg) {
+  heroAvatarImg.addEventListener('error', function () {
+    this.style.display = 'none';
+    this.parentElement.innerHTML += initials();
+  });
+}
+const accAvatarImg = document.getElementById('accAvatarImg');
+if (accAvatarImg) {
+  accAvatarImg.addEventListener('error', function () {
+    this.style.display = 'none';
+    this.parentElement.innerHTML += '<span>DC</span>';
+  });
 }
 
 // ── FORMULARIO CONTACTO ──
@@ -307,3 +334,5 @@ function handleSubmit(e) {
     document.getElementById('contactForm').reset();
   }, 800);
 }
+
+document.getElementById('contactForm').addEventListener('submit', handleSubmit);

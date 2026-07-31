@@ -39,14 +39,14 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#sobre-mi" onclick="closeMenu()" data-es="Sobre mí" data-en="About">Sobre mí</a></li>
-      <li><a href="#habilidades" onclick="closeMenu()" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
-      <li><a href="#experiencia" onclick="closeMenu()" data-es="Experiencia" data-en="Experience">Experiencia</a></li>
-      <li><a href="#educacion" onclick="closeMenu()" data-es="Educación" data-en="Education">Educación</a></li>
-      <li><a href="#certificaciones" onclick="closeMenu()" data-es="Certificaciones" data-en="Certifications">Certificaciones</a></li>
-      <li><a href="#proceso" onclick="closeMenu()" data-es="Proceso" data-en="Process">Proceso</a></li>
-      <li><a href="#proyectos" onclick="closeMenu()" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
-      <li><a href="#idiomas" onclick="closeMenu()" data-es="Idiomas" data-en="Languages">Idiomas</a></li>
+      <li><a href="#sobre-mi" data-es="Sobre mí" data-en="About">Sobre mí</a></li>
+      <li><a href="#habilidades" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
+      <li><a href="#experiencia" data-es="Experiencia" data-en="Experience">Experiencia</a></li>
+      <li><a href="#educacion" data-es="Educación" data-en="Education">Educación</a></li>
+      <li><a href="#certificaciones" data-es="Certificaciones" data-en="Certifications">Certificaciones</a></li>
+      <li><a href="#proceso" data-es="Proceso" data-en="Process">Proceso</a></li>
+      <li><a href="#proyectos" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+      <li><a href="#idiomas" data-es="Idiomas" data-en="Languages">Idiomas</a></li>
     </ul>
     <div class="nav-right">
       <button class="theme-toggle" id="themeBtn" title="Cambiar tema">☀️</button>
@@ -59,10 +59,10 @@
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span data-es="CV" data-en="CV">CV</span>
       </a>
-      <a href="#contacto" class="nav-cta" onclick="closeMenu()" data-es="Contactar" data-en="Contact">Contactar</a>
+      <a href="#contacto" class="nav-cta" data-es="Contactar" data-en="Contact">Contactar</a>
     </div>
   </nav>
-  <div class="nav-overlay" id="navOverlay" onclick="closeMenu()"></div>
+  <div class="nav-overlay" id="navOverlay"></div>
 
   <!-- HERO -->
   <div class="hero">
@@ -96,8 +96,7 @@
       <div class="avatar-ring"></div>
       <div class="avatar-ring2"></div>
       <div class="avatar-img">
-        <img src="perfilDamian.jpeg" alt="Damián Calderón"
-             onerror="this.style.display='none'; this.parentElement.innerHTML += initials()"/>
+        <img src="perfilDamian.jpeg" alt="Damián Calderón" id="heroAvatarImg"/>
       </div>
       <div class="avatar-badge-qa">QA</div>
     </div>
@@ -691,7 +690,7 @@
       <div class="contact-form-wrap">
         <h3 class="form-title" data-es="Envíame un mensaje" data-en="Send me a message">Envíame un mensaje</h3>
         <p class="form-subtitle" data-es="Te respondo en menos de 24 horas" data-en="I'll reply in less than 24 hours">Te respondo en menos de 24 horas</p>
-        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+        <form class="contact-form" id="contactForm">
           <div class="form-row">
             <div class="form-group">
               <label for="nombre" data-es="Nombre" data-en="Name">Nombre</label>
@@ -721,7 +720,7 @@
       <!-- TARJETA DIGITAL -->
       <div class="accordion-divider"></div>
       <div class="accordion-wrap" id="digitalCard">
-        <button class="accordion-header" id="accordionBtn" onclick="toggleAccordion()" aria-expanded="false">
+        <button class="accordion-header" id="accordionBtn" aria-expanded="false">
           <div class="accordion-header-left">
             <div class="accordion-icon-wrap">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
@@ -748,8 +747,7 @@
             <div class="mc-info-col">
               <div class="acc-profile-row">
                 <div class="acc-avatar">
-                  <img src="perfilDamian.jpeg" alt="Damián"
-                       onerror="this.style.display='none'; this.parentElement.innerHTML+='<span>DC</span>'"/>
+                  <img src="perfilDamian.jpeg" alt="Damián" id="accAvatarImg"/>
                 </div>
                 <div>
                   <div class="acc-name">Damián Calderón</div>
@@ -779,7 +777,7 @@
               <div class="mc-section-label mc-section-label--center" data-es="Escanear contacto" data-en="Scan contact">Escanear contacto</div>
               <div class="mc-qr-box"><div id="qrcode"></div></div>
               <div class="mc-qr-hint" data-es="Abre la cámara y apunta al QR para guardar el contacto" data-en="Open your camera and point at the QR to save the contact">Abre la cámara y apunta al QR para guardar el contacto</div>
-              <button onclick="downloadVCard()" class="mc-save-btn">
+              <button id="downloadVCardBtn" class="mc-save-btn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 <span data-es="Guardar contacto" data-en="Save contact">Guardar contacto</span>
               </button>
@@ -794,7 +792,7 @@
     <span data-es="Diseñado por" data-en="Designed by">Diseñado por</span> <span>Damián Calderón</span> · QA Engineer · 2026
   </footer>
 
-  <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Ir al inicio">
+  <button id="backToTop" title="Ir al inicio">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 

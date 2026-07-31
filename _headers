@@ -1,0 +1,19 @@
+/*
+  # Fuerza HTTPS — Netlify lo hace automático, esto lo refuerza a nivel de cabecera
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # Evita que el sitio se cargue dentro de iframes en otros dominios (clickjacking)
+  X-Frame-Options: SAMEORIGIN
+
+  # Evita que el navegador "adivine" el tipo de archivo (MIME sniffing)
+  X-Content-Type-Options: nosniff
+
+  # Controla cuánta información de referencia se envía a otros sitios
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Restringe qué APIs del navegador puede usar la página
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+  # Política de seguridad de contenido — solo carga recursos de fuentes confiables
+  # api.qrserver.com: servicio que genera la imagen del código QR de contacto
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://api.qrserver.com; font-src 'self'; connect-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:

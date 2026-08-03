@@ -314,25 +314,47 @@ function handleSubmit(e) {
   const asunto  = document.getElementById('asunto').value;
   const mensaje = document.getElementById('mensaje').value;
 
+  const originalBtnHTML = btn.innerHTML;
   btn.textContent = lang === 'en' ? 'Sending...' : 'Enviando...';
   btn.disabled = true;
 
-  const body = `${lang === 'en' ? 'Name' : 'Nombre'}: ${nombre}\nEmail: ${email}\n\n${mensaje}`;
-  const mailtoLink = `mailto:rcalderonavila@gmail.com?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(body)}`;
-  window.open(mailtoLink);
-
-  setTimeout(() => {
+  fetch('https://formsubmit.co/ajax/rcalderonavila@gmail.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      name: nombre,
+      email: email,
+      _subject: `Portafolio: ${asunto}`,
+      message: mensaje
+    })
+  })
+  .then(response => response.json())
+  .then(() => {
     msg.style.display    = 'block';
     msg.style.background = 'rgba(48,209,88,0.12)';
     msg.style.color      = '#30d158';
     msg.style.border     = '0.5px solid rgba(48,209,88,0.3)';
     msg.textContent = lang === 'en'
-      ? '✅ Message ready! Your email client opened. If it didn\'t, write to rcalderonavila@gmail.com'
-      : '✅ ¡Mensaje listo! Se abrió tu cliente de correo. Si no se abrió, escríbeme a rcalderonavila@gmail.com';
-    btn.textContent      = lang === 'en' ? '✓ Sent' : '✓ Enviado';
-    btn.style.background = '#30d158';
+      ? '✅ Message sent! I\'ll reply to you soon.'
+      : '✅ ¡Mensaje enviado! Te responderé pronto.';
+    btn.textContent       = lang === 'en' ? '✓ Sent' : '✓ Enviado';
+    btn.style.background  = '#30d158';
     document.getElementById('contactForm').reset();
-  }, 800);
+  })
+  .catch(() => {
+    msg.style.display    = 'block';
+    msg.style.background = 'rgba(255,69,58,0.12)';
+    msg.style.color      = '#ff453a';
+    msg.style.border     = '0.5px solid rgba(255,69,58,0.3)';
+    msg.textContent = lang === 'en'
+      ? '❌ Something went wrong. Please write directly to rcalderonavila@gmail.com'
+      : '❌ Algo salió mal. Por favor escríbeme directamente a rcalderonavila@gmail.com';
+    btn.innerHTML  = originalBtnHTML;
+    btn.disabled   = false;
+  });
 }
 
 document.getElementById('contactForm').addEventListener('submit', handleSubmit);

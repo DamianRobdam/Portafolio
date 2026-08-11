@@ -48,7 +48,7 @@ const statsObs = new IntersectionObserver(entries => {
   if (entries[0].isIntersecting) {
     animateCounter(document.getElementById('s1'), 150, '+');
     animateCounter(document.getElementById('s2'), 90,  '%');
-    animateCounter(document.getElementById('s3'), 12,  '+');
+    animateCounter(document.getElementById('s3'), 6,  '+');
     animateCounter(document.getElementById('s4'), 3,   '+');
     statsObs.disconnect();
   }

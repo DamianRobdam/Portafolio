@@ -1125,6 +1125,19 @@ footer span { color: var(--muted); }
           <span class="pill pill-green" data-es="Aserciones" data-en="Assertions">Aserciones</span>
         </div>
       </div>
+      <div class="bento-card reveal delay-6">
+        <div class="bc-icon bc-icon--orange">🌐</div>
+        <div class="bc-title" data-es="Automatización de interfaz web" data-en="Web UI automation">Automatización de interfaz web</div>
+        <div class="bc-desc" data-es="Pruebas end-to-end sobre navegador con Selenium, aplicando el patrón Page Object Model y esperas explícitas." data-en="End-to-end browser testing with Selenium, applying the Page Object Model pattern and explicit waits.">Pruebas end-to-end sobre navegador con Selenium, aplicando el patrón Page Object Model y esperas explícitas.</div>
+        <div class="skill-pills">
+          <span class="pill pill-orange">Selenium WebDriver</span>
+          <span class="pill pill-orange">Page Object Model</span>
+          <span class="pill pill-orange" data-es="Esperas explícitas" data-en="Explicit waits">Esperas explícitas</span>
+          <span class="pill pill-orange">WebDriverWait</span>
+          <span class="pill pill-orange">XPath / CSS</span>
+          <span class="pill pill-orange" data-es="Pruebas end-to-end" data-en="End-to-end testing">Pruebas end-to-end</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1553,6 +1566,20 @@ footer span { color: var(--muted); }
         </div>
       </div>
 
+      <div class="proj-card reveal delay-8">
+        <div class="proj-header"><div class="proj-emoji">🚕</div><span class="pill pill-orange pill-sm" data-es="Proyecto académico · TripleTen" data-en="Academic project · TripleTen">Proyecto académico · TripleTen</span></div>
+        <div class="proj-title" data-es="Urban Routes: Automatización end-to-end con Selenium" data-en="Urban Routes: End-to-end automation with Selenium">Urban Routes: Automatización end-to-end con Selenium</div>
+        <div class="proj-desc" data-es="Automaticé el flujo completo de solicitud de un taxi en 9 pruebas end-to-end: configuración de ruta, selección de tarifa, confirmación de teléfono por SMS, registro de tarjeta de crédito, mensaje al conductor, requisitos del pedido y asignación del vehículo. Estructuré el proyecto con el patrón Page Object Model en tres módulos (pruebas, objetos de página y utilidades) y usé esperas explícitas con WebDriverWait en lugar de pausas fijas. Cada prueba abre su propio navegador y prepara su estado inicial, de modo que puede ejecutarse de forma aislada sin depender del orden. Durante la automatización detecté tres defectos de la aplicación: dos campos distintos comparten el mismo identificador HTML, el campo de teléfono rechaza espacios sin informarlo y el mensaje al conductor tiene un límite de 24 caracteres no documentado. El código de confirmación del SMS se obtiene interceptando los logs de red del navegador." data-en="I automated the complete taxi booking flow in 9 end-to-end tests: route setup, fare selection, phone confirmation via SMS, credit card registration, driver message, order requirements and vehicle assignment. I structured the project with the Page Object Model pattern across three modules (tests, page objects and utilities), using explicit waits with WebDriverWait instead of fixed pauses. Each test opens its own browser and prepares its initial state, so it can run in isolation regardless of order. During automation I found three application defects: two different fields share the same HTML id, the phone field silently rejects spaces, and the driver message has an undocumented 24-character limit. The SMS confirmation code is retrieved by intercepting the browser network logs.">Automaticé el flujo completo de solicitud de un taxi en 9 pruebas end-to-end: configuración de ruta, selección de tarifa, confirmación de teléfono por SMS, registro de tarjeta de crédito, mensaje al conductor, requisitos del pedido y asignación del vehículo. Estructuré el proyecto con el patrón Page Object Model en tres módulos (pruebas, objetos de página y utilidades) y usé esperas explícitas con WebDriverWait en lugar de pausas fijas. Cada prueba abre su propio navegador y prepara su estado inicial, de modo que puede ejecutarse de forma aislada sin depender del orden. Durante la automatización detecté tres defectos de la aplicación: dos campos distintos comparten el mismo identificador HTML, el campo de teléfono rechaza espacios sin informarlo y el mensaje al conductor tiene un límite de 24 caracteres no documentado. El código de confirmación del SMS se obtiene interceptando los logs de red del navegador.</div>
+        <div class="proj-footer">
+          <span class="pill pill-orange">Selenium</span>
+          <span class="pill pill-green">Python</span>
+          <span class="pill pill-green">Pytest</span>
+          <span class="pill pill-blue">Page Object Model</span>
+          <span class="pill pill-purple">Git / GitHub</span>
+          <span class="pill pill-orange" data-es="Pruebas end-to-end" data-en="End-to-end testing">Pruebas end-to-end</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1772,8 +1799,8 @@ function animateCounter(el, end, suffix, duration = 1800) {
 const statsObs = new IntersectionObserver(entries => {
   if (entries[0].isIntersecting) {
     animateCounter(document.getElementById('s1'), 150, '+');
-    animateCounter(document.getElementById('s2'), 174, '+');
-    animateCounter(document.getElementById('s3'), 8,  '+');
+    animateCounter(document.getElementById('s2'), 183, '+');
+    animateCounter(document.getElementById('s3'), 9,  '+');
     animateCounter(document.getElementById('s4'), 3,   '+');
     statsObs.disconnect();
   }
